@@ -225,7 +225,7 @@ def primeros_siguientes(noterminales,terminale,regla):
     #print(primeros)
 
     siguiente={}
-    siguiente["P"]="$"
+    siguiente[noterminales[0]]="$"
     for i in noterminales:
         try:
             if len(siguiente[i])<2:
