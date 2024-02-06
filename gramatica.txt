@@ -1,0 +1,72 @@
+P T F L D I V N E K R B O H S W A X Y M Z G J Q
+( ) { } main id , ; [ ] int float printf literalCad scanf & nint nfloat * + - / % = if else while for switch case : < > ! | do return
+P' -> P $
+P -> T F ( L ) { D I O H X A W G }
+T -> int 
+T -> float
+F -> main
+F -> id
+L -> T P id V L
+L -> , P id V L
+L -> @
+D -> T P id V L ; D
+D -> @
+I -> printf ( literalCad ) ; I
+I -> scanf ( literalCad , & id ) ; I
+I -> @
+V -> [ N ]
+V -> @
+N -> nint 
+N -> @
+E -> nfloat
+E -> @
+P -> * 
+P -> +
+P -> -
+P -> /
+P -> %
+P -> @
+K -> { R }
+K -> R
+K -> B P B
+K -> B + +
+K -> B - -
+R -> N E R
+R -> , N E R
+R -> @
+B -> id
+B -> nint
+B -> nfloat
+B -> @
+O -> B = O ; O
+O -> B P B P
+O -> B
+O -> @
+H -> if ( B Z B ) { I } S
+H -> I
+S -> else { H }
+S -> @
+W -> while ( B Z B ) { J O M }
+A -> for ( B Z B ; B Z B ; K ) { O A }
+A -> @
+X -> switch ( id ) { Y } 
+Y -> case int :  O ; break ; Y
+Y -> @
+M -> M - = O ;
+M -> M + = O ;
+M -> M + + ;
+M -> M - - ;
+M -> id
+M -> nint 
+Z -> Z =
+Z -> =
+Z -> <
+Z -> !
+Z -> >
+Z -> Z |
+Z -> |
+Z -> Z &
+Z -> &
+G -> T F ( L ) { Q }
+J -> do { I } while ( B Z B Z B Z B ) ;
+Q -> return O ;

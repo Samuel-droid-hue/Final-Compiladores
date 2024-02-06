@@ -164,3 +164,4 @@ def analizar(file):
         print("id=============================================")
         for con in conjunto_sin_duplicados:
             print(con)
+    return tira_tokens
