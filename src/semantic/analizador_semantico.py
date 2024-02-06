@@ -1,4 +1,5 @@
 import src.lexer.analizador_lexico as al
+import src.parser.tabla_analisis as ta
 
 def get_grammar(path):
     with open(path, "r") as file:
@@ -86,7 +87,7 @@ def to_analyze(grammar_path, file_path):
     #input = get_tokens(tokens_path)
     input= al.analizar(file_path).strip().split(' ')
     input.append('$')
-    TA = None
+    TA = ta.tablaDeAnalisis(grammar_path)
     
     # Algoritmo
     stack.append(0)

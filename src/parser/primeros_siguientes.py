@@ -2,18 +2,22 @@ def get_reglas(path):
     with open(path, 'r') as file:
         content = file.readlines()
     content=' '.join(content)
-    content=content.split("\n")
+    content=content.split("\n ")
+    content2=content
     content ='-|-'.join(content)
     content=content.split("-> ")
     content =''.join(content)
-    content=content.split("-|- ")
+    content=content.split("-|-")
     no_terminales = content[0].strip()
     terminales = content[1].strip()
     content.pop(0)
     content.pop(0)
     content.pop(0)
+    content2.pop(0)
+    content2.pop(0)
 
-    return no_terminales, terminales, content
+
+    return no_terminales, terminales, content,content2
 
 def obtener_Primeros(S,regla,noTerminales,terminales,bandera=0):
     v=0
@@ -119,100 +123,9 @@ def obtener_siguientes(i,regla,noterminales,terminale,primeros,sig):
     
     return siguiente
 
-#noterminales = "P T F L D"
-#noterminales=noterminales.split(" ")
-#
-#terminale="( ) int float main id ,"
-#terminale=terminale.split(" ")
-#
-#regla=[
-#"P T F ( L )"
-#,"T int"
-#,"T @"
-#,"F main"
-#,"F id"
-#,"L T P id"
-#,"L , P id"
-#,"L @"
-#,"D T P id"
-#,"D @"]
-
 def primeros_siguientes(noterminales,terminale,regla):
-    # noterminales="P T F L D I V N E K R B O H S W A X Y M Z G J Q"
     noterminales=noterminales.split(" ")
-    # terminale="( ) { } main id , ; [ ] int float printf literalCad scanf & nint nfloat * + - / % = if else while for switch case : < > ! | do return"
     terminale=terminale.split(" ")
-
-    #regla=[
-    #"P T F ( L ) { D I O H X A W G }",
-    #"T int ",
-    #"T float",
-    #"F main",
-    #"F id",
-    #"L T P id V L",
-    #"L , P id V L",
-    #"L @",
-    #"D T P id V L ; D",
-    #"D @",
-    #"I printf ( literalCad ) ; I",
-    #"I scanf ( literalCad , & id ) ; I",
-    #"I @",
-    #"V [ N ]",
-    #"V @",
-    #"N nint ",
-    #"N @",
-    #"E nfloat",
-    #"E @",
-    #"P * ",
-    #"P +",
-    #"P -",
-    #"P /",
-    #"P %",
-    #"P @",
-    #"K { R }",
-    #"K R",
-    #"K B P B",
-    #"K B + +",
-    #"K B - -",
-    #"R N E R",
-    #"R , N E R",
-    #"R @",
-    #"B id",
-    #"B nint",
-    #"B nfloat",
-    #"B @",
-    #"O B = O ; O",
-    #"O B P B P",
-    #"O B",
-    #"O @",
-    #"H if ( B Z B ) { I } S",
-    #"H I",
-    #"S else { H }",
-    #"S @",
-    #"W while ( B Z B ) { J O M }",
-    #"A for ( B Z B ; B Z B ; K ) { O A }",
-    #"A @",
-    # "X switch ( id ) { Y } ",
-    # "Y case int :  O ; break ; Y",
-    # "Y @",
-    # "M M - = O ;",
-    # "M M + = O ;",
-    # "M M + + ;",
-    # "M M - - ;",
-    # "M id",
-    # "M nint ",
-    # "Z Z =",
-    # "Z =",
-    # "Z <",
-    # "Z !",
-    # "Z >",
-    # "Z Z |",
-    # "Z |",
-    # "Z Z &",
-    # "Z &",
-    # "G T F ( L ) { Q }",
-    # "J do { I } while ( B Z B Z B Z B ) ;",
-    # "Q return O ;",]
     bandera=0
     primeros={}
     for i in noterminales:
@@ -222,7 +135,6 @@ def primeros_siguientes(noterminales,terminale,regla):
         primeros[i]=list(set(primeros[i]))
         primeros[i] = [i for i in primeros[i] if i != '']
         primeros[i]=' '.join(primeros[i])
-    #print(primeros)
 
     siguiente={}
     siguiente[noterminales[0]]="$"
@@ -238,7 +150,6 @@ def primeros_siguientes(noterminales,terminale,regla):
         siguiente[i]=list(set(siguiente[i]))
         siguiente[i] = [i for i in siguiente[i] if i != '']
         siguiente[i]=' '.join(siguiente[i])
-    #print(siguiente)
 
     p=[]
     S=[]
@@ -250,10 +161,3 @@ def primeros_siguientes(noterminales,terminale,regla):
     PS["P"]=p
 
     return PS
-
-#path = filedialog.askopenfilename(filetype=[("Archivos de texto", "*.txt")])
-#no_terminales, terminales, reglas = get_reglas(path)
-#ps = primeros_siguientes(no_terminales, terminales, reglas)
-#print(ps['S'])
-#print("######################################################")
-#print(ps['P'])
