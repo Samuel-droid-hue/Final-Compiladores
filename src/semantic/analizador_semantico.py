@@ -87,8 +87,9 @@ def to_analyze(grammar_path, file_path):
     #input = get_tokens(tokens_path)
     input= al.analizar(file_path).strip().split(' ')
     input.append('$')
+    TE.append('$')
     TA = ta.tablaDeAnalisis(grammar_path)
-    
+    ta.imprimirTabla(TA)
     # Algoritmo
     stack.append(0)
 
@@ -116,14 +117,15 @@ def to_analyze(grammar_path, file_path):
                 ir_a = get_action(TA, NT, TE, j, production[0])
                 stack.append(ir_a)
         else:
-            if case_action == 'AC':
+            if case_action == 'ac':
                 # print(stack, "\t\t", input, "\t\t", case_action)
                 analysis.append(get_rowda(stack, input, case_action))
                 accept = True
             else:
-                symbols = find_error(TA[stack[-1]], TE)
+                print("Error")
+                #symbols = find_error(TA[stack[-1]], TE)
                 # print(stack, "\t\t", input, "\t\tError se esperaba: ", symbols)
-                analysis.append(get_rowe(stack, input, symbols))
+                #analysis.append(get_rowe(stack, input, symbols))
                 error = True
     
     return analysis

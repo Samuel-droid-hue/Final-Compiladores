@@ -1,0 +1,18 @@
+P L D T I R C
+( ) { } main id , ; [ ] int float printf literalCad scanf & nint nfloat * + - / % = if else while for switch case : < > ! | do return
+P' -> P $
+P -> int main ( ) { D }
+D -> T id L ; D
+D -> I D
+D -> T id [ nint ] ; D
+D -> R D
+D -> @
+L -> , id L
+L -> @
+I -> printf ( literalCad ) ;
+I -> scanf ( literalCad , & id ) ;
+R -> if ( C ) { D }
+C -> id = = id
+C -> id ! = id
+T -> int
+T -> float

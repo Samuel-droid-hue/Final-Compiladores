@@ -5,7 +5,14 @@
 1 , {  , { 
 2 , int  , int 
 2 , a  , id 
-2 , =  , = 
-2 , 0  , nint 
+2 , ,  , , 
+2 , b  , id 
+2 , ,  , , 
+2 , c  , id 
 2 , ;  , ; 
-3 , }  , } 
+3 , printf  , printf 
+3 , (  , ( 
+3 , "Hola Mundo"  , literalCad 
+3 , )  , ) 
+3 , ;  , ; 
+4 , }  , } 
