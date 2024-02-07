@@ -58,7 +58,7 @@ class Compilador():
         self.action_entry.insert(0, "")
         self.action_entry.config(state="readonly")
         
-        self.analyze_button = Button(self.frame, text="Analizar", background="#C0EFD2", command=self.analyze)
+        self.analyze_button = Button(self.frame, text="Analizar", background="#C0EFD2", command=self.analizarLR)
         self.analyze_button.grid(row=3, column=0, padx=20, pady=20)
         
         clear_button = Button(self.frame, text="LimpiarTodo", background="#C0EFD2", command=self.clear)
@@ -128,11 +128,6 @@ class Compilador():
 
         # Limpiar la tabla y la interfaz
         self.clear_gram()
-
-    def analyze(self):
-        if not self.isAnalyzed:
-            resultado = asm.to_analyze(self.grammar_entry.get(), self.tokens_entry.get())
-            print(resultado)
             
     def show_tokens(self):
         sub = Toplevel(self.root)
@@ -204,19 +199,19 @@ class Compilador():
         font_style = ("Arial", 10, "bold")
         
         if grammar_path and tokens_path:
-            analysis, program, tokens = lr.to_analyze(grammar_path, tokens_path, action_path)
+            analysis = asm.to_analyze(grammar_path, tokens_path)
 
-            label = Label(self.table_frame,text=f"Programa : {program}",borderwidth=2,relief="solid",background="#16C4DF")
-            label.grid(row=0, column=0, padx=2, pady=2)
+            #label = Label(self.table_frame,text=f"Programa : {program}",borderwidth=2,relief="solid",background="#16C4DF")
+            #label.grid(row=0, column=0, padx=2, pady=2)
             
-            label = Label(self.table_frame,text=f"Tokens : {tokens}",borderwidth=2,relief="solid",background="#16C4DF")
-            label.grid(row=1, column=0, padx=2, pady=2)
+            #label = Label(self.table_frame,text=f"Tokens : {tokens}",borderwidth=2,relief="solid",background="#16C4DF")
+            #label.grid(row=1, column=0, padx=2, pady=2)
 
-            label = Label(self.table_frame,text=" Pila ",borderwidth=1,width=35,relief="solid",background="#A43371", foreground="black", font=font_style)
+            label = Label(self.table_frame,text=" Pila ",borderwidth=1,width=65,relief="solid",background="#A43371", foreground="black", font=font_style)
             label.grid(row=2, column=0, padx=2, pady=2)
-            label = Label(self.table_frame,text=" Entrada ",borderwidth=1,width=35,relief="solid",background="#A43371",  foreground="black", font=font_style)
+            label = Label(self.table_frame,text=" Entrada ",borderwidth=1,width=65,relief="solid",background="#A43371",  foreground="black", font=font_style)
             label.grid(row=2, column=1, padx=2, pady=2)
-            label = Label(self.table_frame,text=" Accion ",borderwidth=1,width=35,relief="solid",background="#A43371", foreground="black", font=font_style)
+            label = Label(self.table_frame,text=" Accion ",borderwidth=1,width=65,relief="solid",background="#A43371", foreground="black", font=font_style)
             label.grid(row=2, column=2, padx=2, pady=2)
             
             self.result = ""
@@ -239,7 +234,7 @@ class Compilador():
                         self.table_frame,
                         text=header_text,
                         borderwidth=1,
-                        width=35,
+                        width=65,
                         relief="solid",
                         background="#16DFAE",  # Color de fondo
                         foreground="black",       # Color de primer plano
